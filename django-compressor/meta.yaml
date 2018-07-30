@@ -1,0 +1,53 @@
+{% set name = "django-compressor" %}
+{% set version = "1.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  #url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gza
+  url: https://github.com/django-compressor/django-compressor/archive/1.5.tar.gz
+  #sha256: 0189fd1dbf87d802f4e4e21ebc9220f29bbb7771b252a958ad6119f61453e22e
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv "
+
+requirements:
+  host:
+    - django-appconf >=0.4
+    - pip
+    - pip
+    - python
+  run:
+    - django-appconf >=0.4
+    - python
+
+test:
+  imports:
+    - compressor
+    - compressor.contrib
+    - compressor.filters
+    - compressor.filters.cssmin
+    - compressor.filters.jsmin
+    - compressor.management
+    - compressor.management.commands
+    - compressor.offline
+    - compressor.parser
+    - compressor.templatetags
+    - compressor.tests
+    - compressor.utils
+
+about:
+  home: http://django-compressor.readthedocs.org/en/latest/
+  license: MIT
+  license_family: MIT
+  license_file: 
+  summary: Compresses linked and inline JavaScript or CSS into single cached files.
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - doob-project
