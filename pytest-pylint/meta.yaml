@@ -1,0 +1,44 @@
+{% set name = "pytest-pylint" %}
+{% set version = "0.12.3" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 7be893091e542752105e0b8441faeed3ac31a48b64931c58d79567a5e8768a70
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv "
+  preserve_egg_dir: True
+
+requirements:
+  host:
+    - pip
+    - pip
+    - pylint >=1.4.5
+    - pytest >=2.7
+    - python
+    - setuptools
+    - six
+  run:
+    - pylint >=1.4.5
+    - pytest >=2.7
+    - python
+    - setuptools
+    - six
+
+about:
+  home: https://github.com/carsongee/pytest-pylint
+  license: MIT
+  license_family: MIT
+  license_file: 
+  summary: pytest plugin to check source code with pylint
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - your-github-id-here
