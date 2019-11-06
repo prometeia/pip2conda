@@ -1,0 +1,48 @@
+package:
+  name: "openapi-spec-validator"
+  version: "0.2.8"
+
+source:
+  url: "https://files.pythonhosted.org/packages/68/2c/22f3d3d04a0cdb1d0a1389bd7efaa1488e65eca236957a94442325571b7e/openapi-spec-validator-0.2.8.tar.gz"
+  sha256: "e489c7a273284bc78277ac22791482e8058d323b4a265015e9fcddf6a8045bcd"
+
+build:
+  number: 0
+  entry_points:
+    - openapi-spec-validator = openapi_spec_validator.__main__:main
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  preserve_egg_dir: True
+
+requirements:
+  build:
+    - python ==2.7.*
+    - setuptools
+    - six
+  run:
+    - jsonschema
+    - pathlib2
+    - python ==2.7.*
+    - pyyaml >=5.1
+    - six
+
+test:
+  imports:
+    - openapi_spec_validator
+  commands:
+    - openapi-spec-validator --help
+  requires:
+    - mock
+    - pytest
+    - pytest-cov
+    #- pytest-flake8
+    #- tox
+
+about:
+  home: "https://github.com/p1c2u/openapi-spec-validator"
+  license: "Apache, Version 2.0"
+  license_family: "APACHE"
+  license_file: ""
+  summary: "Summary of the package"
+  doc_url: ""
+  dev_url: ""
+
