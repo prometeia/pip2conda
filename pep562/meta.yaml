@@ -12,14 +12,15 @@ source:
 build:
   number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
-  preserve_egg_dir: True  
+  preserve_egg_dir: True
+  noarch: True
 
 requirements:
   host:
     - pip
-    - python
+    - python =2.7
   run:
-    - python
+    - python =2.7
 
 test:
   imports:
@@ -36,4 +37,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - your-github-id-here
+    - doob-project
