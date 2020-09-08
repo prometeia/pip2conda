@@ -1,0 +1,39 @@
+{% set name = "pep562" %}
+{% set version = "1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 58cb1cc9ee63d93e62b4905a50357618d526d289919814bea1f0da8f53b79395
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+  preserve_egg_dir: True  
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - pep562
+
+about:
+  home: "https://github.com/facelessuser/pep562"
+  license: MIT
+  license_family: MIT
+  license_file: 
+  summary: "Backport of PEP 562."
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - your-github-id-here
