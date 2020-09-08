@@ -13,14 +13,13 @@ build:
   number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
   preserve_egg_dir: True
-  noarch: True
+  noarch: python
 
 requirements:
-  host:
-    - pip
-    - python =2.7
   run:
-    - python =2.7
+    - python
+  build:
+    - python {{ python }}    
 
 test:
   imports:
